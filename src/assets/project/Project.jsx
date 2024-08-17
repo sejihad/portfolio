@@ -3,6 +3,7 @@ import p_2 from "./project-img-2.jpg";
 import p_3 from "./project-img-3.jpg";
 import p_4 from "./project-img-4.jpg";
 import p_5 from "./project-img-5.jpg";
+import p_6 from "./project-img-6.jpg";
 const project = [
   {
     p_id: "1",
@@ -17,7 +18,7 @@ const project = [
   {
     p_id: "3",
     p_img: p_3,
-    p_link: "https://varsity.infinityfreeapp.com/",
+    p_link: "https://varsity-self.vercel.app/",
   },
   {
     p_id: "4",
@@ -28,6 +29,11 @@ const project = [
     p_id: "5",
     p_img: p_5,
     p_link: "https://shopper-delta.vercel.app",
+  },
+  {
+    p_id: "6",
+    p_img: p_6,
+    p_link: "https://alnoman.infinityfreeapp.com/",
   },
 ];
 export default project;
