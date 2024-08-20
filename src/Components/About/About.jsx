@@ -12,9 +12,11 @@ const About = () => {
 
           <h2 className="section__title">About Me</h2>
           <p className="about__description">
-            {" "}
-            I’m a Front End Web developer who is passionate about making
-            error-free websites. I am good at WordPress
+            As a web developer, I specialize in creating responsive and
+            user-friendly websites using HTML, CSS, JavaScript, and ReactJS. I
+            focus on delivering clean, efficient code and seamless user
+            experiences, with expertise in WordPress customization to develop
+            tailored solutions that meet diverse client needs.
           </p>
 
           <a href="#contact" className="button">

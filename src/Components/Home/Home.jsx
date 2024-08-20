@@ -17,8 +17,10 @@ const Home = () => {
             <h3 className="home__education">Web Developer</h3>
 
             <p className="home__description">
-              I’m a Front End Web developer who is passionate about making
-              error-free websites.
+              I'm a Front End Web Developer focused on creating clean,
+              error-free websites that deliver a seamless user experience. My
+              attention to detail ensures that every project meets high
+              standards.
             </p>
 
             <a href="#contact" className="button">

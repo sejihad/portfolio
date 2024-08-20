@@ -15,8 +15,9 @@ const Services = () => {
           <h2 className="services__title">Web developer</h2>
 
           <p className="services__description">
-            I’m a Front End Web developer who is passionate about making
-            error-free websites with 100% client satisfaction.
+            I'm a Front End Web Developer focused on creating clean, error-free
+            websites that deliver a seamless user experience. My attention to
+            detail ensures that every project meets high standards.
           </p>
         </article>
         <article className="services__card">
@@ -24,8 +25,10 @@ const Services = () => {
           <h2 className="services__title">Wordpress Theme Customizer</h2>
 
           <p className="services__description">
-            Passionate WordPress Theme Customizer . I find joy in crafting
-            user-friendly, customizable sites.
+            Transform your WordPress website into a unique and fully functional
+            platform with my expert customization services. Whether you need to
+            tweak the design, add new features, or optimize the performance,
+            I’ve got you covered.
           </p>
         </article>
       </div>
