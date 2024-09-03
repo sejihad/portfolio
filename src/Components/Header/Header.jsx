@@ -32,14 +32,38 @@ const Header = () => {
         });
       },
       {
-        threshold: 0.7, // Trigger when 70% of the section is visible
+        threshold: 0.5, // Adjusted threshold
       }
     );
 
     sections.forEach((section) => observer.observe(section));
 
+    // Scroll event for mobile devices
+    const handleScroll = () => {
+      const scrollPos = window.scrollY + 200; // Adjust offset as needed
+
+      sections.forEach((section) => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+
+        if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+          const sectionId = section.getAttribute("id");
+          navLinks.forEach((link) => link.classList.remove("active-link"));
+          const navItem = document.querySelector(
+            `.nav__link[href*=${sectionId}]`
+          );
+          if (navItem) {
+            navItem.classList.add("active-link");
+          }
+        }
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
     return () => {
       sections.forEach((section) => observer.unobserve(section));
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
@@ -87,13 +111,13 @@ const Header = () => {
             </li>
           </ul>
 
-          {/* <!-- close button --> */}
+          {/* Close button */}
           <div onClick={hideMenu} className="nav__close" id="nav-close">
             <i className="ri-close-line"></i>
           </div>
         </div>
 
-        {/* <!-- toggle button --> */}
+        {/* Toggle button */}
         <div onClick={showMenu} className="nav__toggle" id="nav-toggle">
           <i className="ri-menu-line"></i>
         </div>
