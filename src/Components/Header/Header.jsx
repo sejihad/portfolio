@@ -1,21 +1,47 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import "./Header.css";
 
 const Header = () => {
   const menuRef = useRef();
+
   const showMenu = () => {
     menuRef.current.style.right = "0";
   };
 
-  /*=============== REMOVE MENU MOBILE ===============*/
   const hideMenu = () => {
     menuRef.current.style.right = "-75%";
   };
-  const navLink = document.querySelectorAll(".nav__link");
-  const linkAction = () => {
-    menuRef.current.style.right = "-75%";
-  };
-  navLink.forEach((n) => n.addEventListener("click", linkAction));
+
+  // Highlight active section
+  useEffect(() => {
+    const sections = document.querySelectorAll("section[id]");
+    const navLinks = document.querySelectorAll(".nav__link");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const sectionId = entry.target.getAttribute("id");
+          const navItem = document.querySelector(
+            `.nav__link[href*=${sectionId}]`
+          );
+
+          if (entry.isIntersecting) {
+            navLinks.forEach((link) => link.classList.remove("active-link"));
+            navItem.classList.add("active-link");
+          }
+        });
+      },
+      {
+        threshold: 0.7, // Trigger when 70% of the section is visible
+      }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+
+    return () => {
+      sections.forEach((section) => observer.unobserve(section));
+    };
+  }, []);
 
   return (
     <header className="header" id="header">
@@ -27,37 +53,41 @@ const Header = () => {
         <div ref={menuRef} className="nav__menu" id="nav-menu">
           <ul className="nav__list">
             <li className="nav__item">
-              <a href="#home" className="nav__link active-link">
+              <a
+                href="#home"
+                className="nav__link active-link"
+                onClick={hideMenu}
+              >
                 Home
               </a>
             </li>
 
             <li className="nav__item">
-              <a href="#about" className="nav__link">
+              <a href="#about" className="nav__link" onClick={hideMenu}>
                 About
               </a>
             </li>
 
             <li className="nav__item">
-              <a href="#services" className="nav__link">
+              <a href="#services" className="nav__link" onClick={hideMenu}>
                 Services
               </a>
             </li>
 
             <li className="nav__item">
-              <a href="#projects" className="nav__link">
+              <a href="#projects" className="nav__link" onClick={hideMenu}>
                 Projects
               </a>
             </li>
 
             <li className="nav__item">
-              <a href="#contact" className="nav__link">
+              <a href="#contact" className="nav__link" onClick={hideMenu}>
                 Contact
               </a>
             </li>
           </ul>
 
-          {/* <!-- colse button --> */}
+          {/* <!-- close button --> */}
           <div onClick={hideMenu} className="nav__close" id="nav-close">
             <i className="ri-close-line"></i>
           </div>
