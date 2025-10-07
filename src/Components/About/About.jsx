@@ -1,4 +1,3 @@
-import React from "react";
 import profile_img from "../../assets/profile.png";
 import "./About.css";
 const About = () => {
