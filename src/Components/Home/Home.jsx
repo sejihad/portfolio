@@ -1,4 +1,3 @@
-import React from "react";
 import profile_img from "../../assets/profile.png";
 import "./Home.css";
 
@@ -38,7 +37,7 @@ const Home = () => {
             </a>
 
             <a
-              href="https://www.facebook.com/jihad639/"
+              href="https://www.facebook.com/sejihad/"
               target="_blank"
               className="home__social-link"
             >

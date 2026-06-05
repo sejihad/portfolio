@@ -1,4 +1,3 @@
-import React from "react";
 import "./Footer.css";
 const Footer = () => {
   return (
@@ -20,7 +19,7 @@ const Footer = () => {
             <i className="ri-google-fill"></i>
           </a>
           <a
-            href="https://www.instagram.com/sejihadul/"
+            href="https://www.instagram.com/sejihad/"
             target="_blank"
             className="footer__social-link"
           >
