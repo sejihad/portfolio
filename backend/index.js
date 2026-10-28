@@ -7,20 +7,21 @@ const app = express();
 const port = Number(process.env.PORT || 3000);
 
 const allowedOrigins = [
-  process.env.FRONTEND_URL,
+  process.env.FRONTEND_URL ? process.env.FRONTEND_URL.replace(/\/$/, "") : null,
   "http://localhost:5173",
 ].filter(Boolean);
 
 app.use(
   cors({
     origin(origin, callback) {
-      if (!origin || allowedOrigins.includes(origin)) {
+      if (!origin || allowedOrigins.includes(origin) || allowedOrigins.includes("*")) {
         return callback(null, true);
       }
 
       return callback(new Error(`CORS blocked origin: ${origin}`));
     },
-    methods: ["GET", "POST"],
+    methods: ["GET", "POST", "OPTIONS"],
+    credentials: true,
   }),
 );
 app.use(express.json({ limit: "20kb" }));
@@ -100,7 +101,7 @@ app.get("/", (_req, res) => {
   res.json({ ok: true, message: "Email API is running" });
 });
 
-app.post("/api/send-email", async (req, res) => {
+app.post(["/api/send-email", "/send-email"], async (req, res) => {
   const missingEnv = getMissingEnv();
 
   if (missingEnv.length) {
@@ -170,6 +171,10 @@ app.post("/api/send-email", async (req, res) => {
   }
 });
 
-app.listen(port, () => {
-  console.log(`Email API running on http://localhost:${port}`);
-});
+if (process.env.NODE_ENV !== "production") {
+  app.listen(port, () => {
+    console.log(`Email API running on http://localhost:${port}`);
+  });
+}
+
+module.exports = app;
