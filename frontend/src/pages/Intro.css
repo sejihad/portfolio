@@ -99,24 +99,11 @@
   width: 100%;
   height: auto;
   display: block;
-  filter: grayscale(0.2);
-  transition: all 0.5s ease;
+  transition: transform 0.5s ease;
 }
 
 .image-box:hover .image-wrapper img {
-  filter: grayscale(0);
   transform: scale(1.05);
-}
-
-.image-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(34, 211, 238, 0.1),
-    rgba(168, 85, 247, 0.1)
-  );
-  pointer-events: none;
 }
 
 .tech-badges {

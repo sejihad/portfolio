@@ -64,7 +64,6 @@ export default function Profile() {
             </div>
             <div className="image-wrapper">
               <img src={profilePic} alt="SE Jihad" />
-              <div className="image-overlay"></div>
               <div className="tech-badges">
                 <span className="tech-badge">
                   <SiReact /> React
